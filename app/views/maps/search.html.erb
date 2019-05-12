@@ -1,0 +1,21 @@
+<%= form_for(@map, url: searched_path) do |f| %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.submit "search" %>
+<% end %>
+
+<%= flash[:notice] %>
+
+<div id="gmap"></div>
+
+<script>
+  var map;
+  function initMap() {
+    var target = document.getElementById('gmap');
+    var point = {lat: <%= @map.latitude %>, lng: <%= @map.longitude %>};
+
+    map = new google.maps.Map(target, {
+      center: point, zoom: 14
+    });
+  }
+</script>
