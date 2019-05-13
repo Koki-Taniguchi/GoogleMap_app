@@ -18,7 +18,7 @@ class MapsController < ApplicationController
   end
 
   def map_set(map)
-    if address = Geocoder.coordinates(@map.address)
+    if address = Geocoder.coordinates(map.address)
       map.latitude = address[0];
       map.longitude = address[1];
     else
